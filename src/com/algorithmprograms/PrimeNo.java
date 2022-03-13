@@ -1,34 +1,42 @@
 package com.algorithmprograms;
 
+import java.util.ArrayList;
+
 public class PrimeNo {
+	static ArrayList<Integer> arrayList = new ArrayList<>();
+
+	/**
+	 * Method for prime numbers
+	 * 
+	 * @param num - number of range
+	 * @return
+	 */
 	public static boolean isPrimeorNot(int num) {
-		boolean flag = false;
-		if (0 <= num && num <= 1000) {
-			for (int i = 2; i <= num / 2; ++i) {
-				// condition for nonprime number
-				if (num % i == 0) {
-					flag = true;
-					break;
-				}
+		if (num == 0 || num == 1)
+			return false;
+		for (int i = 2; i <= num / 2; ++i) {
+			if (num % i == 0) {
+				return false;
 			}
-
-			if (!flag)
-				System.out.println(num + " is a prime number.");
-			else
-				System.out.println(num + " is not a prime number.");
 		}
-		return flag;
+		return true;
 
 	}
 
-	public static void main(String[] input) {
-		int n = 23;
+	public static void main(String[] args) {
+		System.out.println("The Prime numbers of range 0 to 1000");
 		for (int i = 0; i <= 1000; i++) {
-			if (PrimeNo.isPrimeorNot(i)) {
-				System.out.print(i + " ");
+			/**
+			 * calling and checking number is prime or not
+			 */
+			if (isPrimeorNot(i)) {
+				arrayList.add(i);
 			}
-
 		}
-
+		/**
+		 * Print the prime numbers of range
+		 */
+		System.out.println(arrayList);
 	}
+
 }
